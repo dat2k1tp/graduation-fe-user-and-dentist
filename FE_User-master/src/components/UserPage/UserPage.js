@@ -229,11 +229,11 @@ function UserPage() {
                                 </li>
                             </ul>
 
-                            <form className="d-flex">
+                            {/* <form className="d-flex">
                                 <div>
                                     <input className="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search" style={{ borderRadius: '10px' }} />
                                 </div>
-                            </form>
+                            </form> */}
 
                             <div className="navbar-nav">
                                 <li className="nav-item dropdown">
@@ -374,9 +374,9 @@ function UserPage() {
                                 (
                                     <Route path="/login">
                                         <Login setIsLogin={setIsLogin}
-                                            isLogin={isLogin} 
+                                            isLogin={isLogin}
                                             setAccount={setAccount}
-                                            setAuth={setAuth}/>
+                                            setAuth={setAuth} />
                                     </Route>
                                 )
                         }
@@ -389,7 +389,7 @@ function UserPage() {
                                 && typeof (auth.rolesId) !== 'undefined'
                                 ?
                                 (
-                                    <React.Fragment>
+                                    <Switch>
                                         <Route path="/book">
                                             <Book />
                                         </Route>
@@ -403,11 +403,11 @@ function UserPage() {
                                         </Route>
 
                                         <Route path="*" >
-                                            {/* <ErrorPage /> */}
+                                            <ErrorPage />
                                             {/* <h1>token</h1> */}
                                         </Route>
 
-                                    </React.Fragment>
+                                    </Switch>
                                 ) :
                                 (
                                     <React.Fragment>

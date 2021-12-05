@@ -326,22 +326,24 @@ export default function HomeDentist() {
                                                 && typeof (auth.rolesId) !== 'undefined'
                                                 ?
                                                 (
-                                                    <React.Fragment>
+                                                    <Switch>
 
                                                         <Route path="/dentist-infomation">
                                                             <DentistInformation />
                                                         </Route>
+                                                        
                                                         <Route path="/statistcal">
                                                             <Statistical />
                                                         </Route>
+
                                                         <Route path="/work-schedule">
                                                             <WorkSchedule />
                                                         </Route>
+
                                                         <Route path="*">
-                                                            {/* <ErrorPage /> */}
-                                                            {/* <Redirect to="/"/> */}
+                                                            <ErrorPage />
                                                         </Route>
-                                                    </React.Fragment>
+                                                    </Switch>
                                                 )
                                                 :
                                                 (

@@ -55,7 +55,7 @@ export default function ShowDentist (){
                             <img src={srcUrl + val.image} className="card-img-top" height="310px" alt="..."/>
                             <div className="card-body">
                             <h5 className="card-title">{val.fullName}</h5>
-                            <p className="card-text">Ngày sinh: {val.birthday}.</p>
+                            <p className="card-text">Kinh nghiệm: {val.exp.substring(0,60)}...</p>
                             <p className="card-text">Email: {val.accounts.email}</p>
                             </div>
                         </div>

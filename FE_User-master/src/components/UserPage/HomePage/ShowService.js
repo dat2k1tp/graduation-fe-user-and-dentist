@@ -301,7 +301,7 @@ export default function ShowService() {
                                                             <div className="card-body" >
                                                                 <img src={srcUrl + val.image} className="card-img-top mb-2 img-fluid"
                                                                     style={{ width: '20rem', height: '7rem' }} alt="..." />
-                                                                <h5 className="card-title">{val.name}</h5>
+                                                                <h5 className="card-title text-uppercase">{val.name}</h5>
                                                                 <p className="card-text" style={{ color: '#00bcd5' }}>
                                                                     Giá: {formatPrice(val.price)}
                                                                 </p>
