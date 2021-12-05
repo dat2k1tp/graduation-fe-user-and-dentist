@@ -5,7 +5,7 @@ import Step from '@material-ui/core/Step';
 import StepButton from '@material-ui/core/StepButton';
 import Typography from '@material-ui/core/Typography';
 import http from '../../../service/http-common'
-import { useEffect, useState } from 'react'
+import { useEffect} from 'react'
 import ModalCancelWorkSchedule from './ModalCancelWorkSchedule';
 
 //css
@@ -44,53 +44,17 @@ function getStepContent(stepIndex) {
     }
 }
 
-export default function StepByStep({ setUpdateList }) {
+export default function StepByStep({ setUpdateList,booking}) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const completed = {}
     const steps = getSteps();
-
-
-
-
-
-    //bookingId
     let id = Number(sessionStorage.getItem("bookingId"));
 
-    // lấy thông tin đặt lịch
-    const [booking, setBooking] = useState({
-        id: "",
-        dentistProfile: {},
-        customerProfile: {
-            id: "",
-            accounts: {
-                id: ""
-            }
-        },
-        bookingDate: "",
-        description: "",
-        status: "",
-        scheduleTime: {
-            dayOfWeek: "",
-            end: "",
-            start: ""
-        },
 
 
-    });
-    useEffect(() => {
-        http({
-            url: '/booking/' + id,
-            method: 'GET'
-        })
-            .then((response) => {
-                const { data } = response;
-                setBooking(data.data);
-            })
-            .catch((error) => {
-                console.log(error, error.response);
-            });
-    }, [id])
+
+    
 
 
     useEffect(() => {

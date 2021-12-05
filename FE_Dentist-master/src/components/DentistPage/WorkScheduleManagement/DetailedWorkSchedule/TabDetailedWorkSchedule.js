@@ -34,7 +34,8 @@ export default function TabDetailedWorkSchedule({ setUpdateList, updateList, set
             end: "",
             start: ""
         },
-        ketqua:""
+        ketqua:"",
+        ghichu:""
 
 
     });
@@ -56,12 +57,18 @@ export default function TabDetailedWorkSchedule({ setUpdateList, updateList, set
     return (
         <div className="container mt-5">
             {/* Chi tiết hồ sơ khám */}
-            <ShowWorkingScheduleDetails updateList={updateList} />
+            <ShowWorkingScheduleDetails updateList={updateList}
+             setUpdateList={setUpdateList} booking={booking} 
+             setBooking={setBooking}
+             />
             {/*End Chi tiết hồ sơ khám */}
 
             {/* Trạng thái */}
             <div className="row border border-dark mt-5">
-                <StepByStep setUpdateList={setUpdateList} />
+                <StepByStep setUpdateList={setUpdateList}
+                 updateList={updateList}
+                 booking={booking} 
+                setBooking={setBooking}/>
             </div>
             {/* End Trạng thái */}
 

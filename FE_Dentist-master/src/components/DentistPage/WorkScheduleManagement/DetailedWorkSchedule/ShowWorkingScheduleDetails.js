@@ -3,47 +3,9 @@ import { useEffect, useState } from 'react'
 import { formatDate } from '../../../../utils/moment-helper';
 import { useForm } from "react-hook-form";
 import moment from "moment";
-export default function ShowWorkingScheduleDetails({ updateList }) {
+export default function ShowWorkingScheduleDetails({setUpdateList,booking,setBooking }) {
 
 
-    //bookingId
-    let id = Number(sessionStorage.getItem("bookingId"));
-
-    // lấy thông tin đặt lịch
-    const [booking, setBooking] = useState({
-        id: "",
-        dentistProfile: {},
-        customerProfile: {},
-        bookingDate: "",
-        description: "",
-        status: "",
-        scheduleTime: {
-            dayOfWeek: "",
-            end: "",
-            start: ""
-        },
-        deleteAt: ""
-
-
-    });
-
-    useEffect(() => {
-        if (typeof (id) !== 'undefined' && id !== null) {
-            http({
-                url: '/booking/' + id,
-                method: 'GET'
-            })
-                .then((response) => {
-                    const { data } = response;
-                    setBooking(data.data);
-                })
-                .catch((error) => {
-                    console.log(error, error.response);
-                });
-
-        }
-
-    }, [id, updateList])
 
 
     //CẬP NHẬT THỜI GIAN
@@ -78,7 +40,8 @@ export default function ShowWorkingScheduleDetails({ updateList }) {
     //set dayOfWeek
     const onChangeDayOfWeek = (e) => {
         setDay(e.target.value)
-        document.getElementById('scheduleTime').value = ""
+        document.getElementById('scheduleTime').value = "";
+        booking.scheduleTime.id="";
     };
 
 
@@ -112,15 +75,21 @@ export default function ShowWorkingScheduleDetails({ updateList }) {
 
 
     const onHandleSubmit = (data) => {
-        const confirm = window.confirm("Bạn muốn cập nhật lịch khám này không ?");
-        if (confirm === true) {
-            onUpdateBooking();
+        if (booking.scheduleTime.id) {
+            const confirm = window.confirm("Bạn muốn cập nhật lịch khám này không ?");
+            if (confirm === true) {
+                onUpdateBooking();
+            }
+           
+        } else {
+            document.getElementById('scheduleTime').focus();
         }
+
     };
+    // console.log(booking);
 
     //PUT DATA
     const onUpdateBooking = () => {
-        console.log(booking);
         http({
             url: `http://localhost:8080/api/v1/booking/` + booking.id,
             method: "PUT",
@@ -132,6 +101,7 @@ export default function ShowWorkingScheduleDetails({ updateList }) {
                     ...booking,
                     data
                 })
+                setUpdateList((prevActiveStep) => prevActiveStep + 1);
                 alert('Thay đổi lịch thành công !')
             })
             .catch((error) => {
@@ -139,8 +109,8 @@ export default function ShowWorkingScheduleDetails({ updateList }) {
                 const { data } = error.response
                 alert("Cập nhật thất bại");
                 data.errors.details !== null &&
-                typeof(data.errors.details)!=='undefined' 
-                ? alert(data.errors.details) : console.log("update fail");
+                    typeof (data.errors.details) !== 'undefined'
+                    ? alert(data.errors.details) : console.log("update fail");
             });
     };
 

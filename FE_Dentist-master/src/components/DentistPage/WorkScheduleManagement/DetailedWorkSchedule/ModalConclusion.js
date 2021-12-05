@@ -68,7 +68,7 @@ export default function ModalConclusion({ booking,setBooking }) {
                                     <label htmlFor="message-text" className="col-form-label">Kết quả khám:</label>
                                     <textarea className="form-control" id="message-text"
                                         rows="3" {...formDataKetQua}
-                                        value={booking.ketqua}
+                                        value={booking.ketqua===null?"":booking.ketqua}
                                         onChange={(e)=>{
                                             formDataKetQua.onChange(e);
                                             setBooking({

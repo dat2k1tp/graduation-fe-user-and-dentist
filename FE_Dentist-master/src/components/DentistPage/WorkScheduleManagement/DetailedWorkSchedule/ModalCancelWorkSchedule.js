@@ -11,6 +11,8 @@ export default function ModalCancelWorkSchedule({ booking,
 
         }
     }
+    // console.log(booking)
+
 
     //PUT DATA
     const onUpdateBooking = (data) => {
