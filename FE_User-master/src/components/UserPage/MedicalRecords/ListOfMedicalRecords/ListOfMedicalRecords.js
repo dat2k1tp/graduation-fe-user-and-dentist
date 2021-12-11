@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import http from '../../../service/http-common'
 import { formatDate } from "../../../../utils/moment-helper";
+// import axios from "axios"
 
-
-export default function ListOfMedicalRecords({ updateStatus,setTab}) {
+export default function ListOfMedicalRecords({ updateStatus, setTab }) {
     // {setShow1,setShow2}
 
 
@@ -201,7 +201,7 @@ export default function ListOfMedicalRecords({ updateStatus,setTab}) {
 
 
     //SORT
- 
+
     const onSortHandle = (event) => {
         const { value } = event.target;
         setSortValue(value);
@@ -295,6 +295,9 @@ export default function ListOfMedicalRecords({ updateStatus,setTab}) {
 
 
     }
+
+
+
 
 
 

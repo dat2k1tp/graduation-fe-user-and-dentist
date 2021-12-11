@@ -45,10 +45,10 @@ export default function NavDentist({ setIsLogin, setAccount,setAuth }) {
                 >
 
                 <Link className="navbar-brand mx-4" to="/">
-                    <img src="https://f17-zpg.zdn.vn/3614250697572501720/429b3cec6084a9daf095.jpg" alt="logo" width="30" height="24" /><span className={classes.span}> Smile Dental</span>
+                    <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="30" height="24" /><span className={classes.span}> Smile Dental</span>
                 </Link>
 
-                <input className="form-control mx-4 mt-4" type="search" placeholder="Tìm kiếm" aria-label="Search" style={{ borderRadius: '10px' }} />
+                {/* <input className="form-control mx-4 mt-4" type="search" placeholder="Tìm kiếm" aria-label="Search" style={{ borderRadius: '10px' }} /> */}
 
                 <nav className="navbar navbar-dark bg-dark mt-1 ms-1">
                     <div className="container-fluid">
@@ -69,7 +69,7 @@ export default function NavDentist({ setIsLogin, setAccount,setAuth }) {
                 <nav className="navbar navbar-dark bg-dark mt-1 ms-1">
                     <div className="container-fluid">
                         <Link className="text-decoration-none" to="/work-schedule" style={{ fontSize: '15px', color: 'white' }}>
-                            <i className="fas fa-calendar-alt"></i> <span > QUẢN LÝ ĐƠN ĐẶT LỊCH</span>
+                            <i className="fas fa-calendar-alt"></i> <span > QUẢN LÝ LỊCH KHÁM</span>
                         </Link>
                     </div>
                 </nav>

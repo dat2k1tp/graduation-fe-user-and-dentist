@@ -115,7 +115,7 @@ function UserPage() {
         sessionStorage.clear();
 
     }
-    console.log(auth);
+    // console.log(auth);
 
 
 
@@ -194,7 +194,7 @@ function UserPage() {
                 <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top" style={{ boxShadow: '1px 3px #f1f1f1' }}>
                     <div className="container-fluid">
                         <Link className="navbar-brand" to="/">
-                            <img src="https://f17-zpg.zdn.vn/3614250697572501720/429b3cec6084a9daf095.jpg" alt="logo" width="30" height="24" /><span className={classes.span}>Smile Dental</span>
+                            <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="30" height="24" /><span className={classes.span}> Smile Dental</span>
                         </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
@@ -239,8 +239,8 @@ function UserPage() {
                                 <li className="nav-item dropdown">
                                     <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <b>{token !== null && account.email !== "" && typeof (account.email) != 'undefined' && auth.rolesId === 'ROLE_CUSTOMER' ?
-                                            "Xin chào " + account.email.substring(0, account.email.indexOf("@")) : 'Xin chào, vui lòng đăng nhập'}</b>
-                                        <img src="https://f17-zpg.zdn.vn/3614250697572501720/429b3cec6084a9daf095.jpg" alt="logo" width="30" height="24" />
+                                            "Xin chào " + account.email.substring(0, account.email.indexOf("@"))+" " : 'Xin chào, vui lòng đăng nhập '}</b>
+                                        <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="30" height="24" />
                                     </span>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                         {
@@ -438,7 +438,7 @@ function UserPage() {
                         <div className="container">
                             <div className="row col-sm-12  d-flex justify-content-center" >
                                 <div className="col-sm-3 offset-1">
-                                    <img src="https://f17-zpg.zdn.vn/3614250697572501720/429b3cec6084a9daf095.jpg" alt="logo" width="120" height="70" />
+                                    <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="120" height="70" />
                                     <p >Khám răng định kỳ giúp phát hiện các dấu hiệu cảnh báo sớm của một số vấn đề liên quan đến sức khỏe. Hãy đến nha sĩ của bạn thường xuyên và giữ gìn sức khỏe.</p>
                                 </div>
                                 <br />

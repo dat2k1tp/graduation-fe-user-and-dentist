@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 import InfoService from "../DetailedExaminationRecords/InfoService";
 import http from "../../../service/http-common"
 import { useEffect, useState } from "react";
@@ -10,51 +10,51 @@ export default function Payment() {
     const [updateVoucher, setUpdateVoucher] = useState(0);
 
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors }
-    } = useForm();
+    // const {
+    //     register,
+    //     handleSubmit,
+    //     formState: { errors }
+    // } = useForm();
 
-    const onSubmitHandle = (data) => {
-        console.log(data.voucherId);
-        checkVoucherExists(data.voucherId);
-    }
+    // const onSubmitHandle = (data) => {
+    //     console.log(data.voucherId);
+    //     checkVoucherExists(data.voucherId);
+    // }
 
 
     let id = Number(sessionStorage.getItem("bookingId"));
 
     // lấy thông tin đặt lịch(BOOKING)
-    const [booking, setBooking] = useState({
-        id: "",
-        dentistProfile: {},
-        customerProfile: {},
-        bookingDate: "",
-        description: "",
-        status: "",
-        scheduleTime: {
-            dayOfWeek: "",
-            end: "",
-            start: ""
-        }
+    // const [booking, setBooking] = useState({
+    //     id: "",
+    //     dentistProfile: {},
+    //     customerProfile: {},
+    //     bookingDate: "",
+    //     description: "",
+    //     status: "",
+    //     scheduleTime: {
+    //         dayOfWeek: "",
+    //         end: "",
+    //         start: ""
+    //     }
 
 
-    });
-    useEffect(() => {
-        // console.log("111");
+    // });
+    // useEffect(() => {
+    //     // console.log("111");
 
-        http({
-            url: '/booking/' + id,
-            method: 'GET'
-        })
-            .then((response) => {
-                const { data } = response;
-                setBooking(data.data);
-            })
-            .catch((error) => {
-                console.log(error, error.response);
-            });
-    }, [id])
+    //     http({
+    //         url: '/booking/' + id,
+    //         method: 'GET'
+    //     })
+    //         .then((response) => {
+    //             const { data } = response;
+    //             setBooking(data.data);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error, error.response);
+    //         });
+    // }, [id])
 
 
 
@@ -222,7 +222,7 @@ export default function Payment() {
 
                 {/* VOUCHER */}
 
-                <div className="border border-dark mt-3">
+                {/* <div className="border border-dark mt-3">
                     <h3>Mã giảm giá</h3>
 
                     <div className="d-flex justify-content-center ">
@@ -253,7 +253,7 @@ export default function Payment() {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
 
             </div>
 
@@ -274,7 +274,7 @@ export default function Payment() {
                                             && voucherU !== null ?
                                             (
                                                 <div className="fs-5">
-                                                   
+
                                                     <span >
 
                                                         Số tiền đã giảm là:
@@ -285,7 +285,7 @@ export default function Payment() {
 
                                                     </span>
                                                     <div>
-                                                        Mã giảm giá đã sử dụng là: 
+                                                        Mã giảm giá đã sử dụng là:
                                                         <b>{voucherU.id}</b>
                                                     </div>
                                                 </div>
@@ -313,6 +313,10 @@ export default function Payment() {
 
                                                 : formatPrice(bkDetail[0].price)
                                         }
+
+                                        {/* <a
+                                            href={`https://pure-stream-96271.herokuapp.com/api/v1/export/download/${booking.id}`}
+                                            className="text-decoration-none fs-5"> <i class='fas fa-print'></i> In ra hóa đơn </a> */}
 
                                     </span>
                                 </div>

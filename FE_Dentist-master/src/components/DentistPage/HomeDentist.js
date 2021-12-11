@@ -169,6 +169,8 @@ export default function HomeDentist() {
             value === watch("newPassword", "") || "Mật khẩu mới không đúng"
     });
 
+   
+
 
     return (
         <BrowserRouter>
@@ -195,8 +197,8 @@ export default function HomeDentist() {
                                             <li className="nav-item dropdown">
                                                 <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                     <b>{token !== null && account.email !== "" && typeof (account.email) != 'undefined' && auth.rolesId === 'ROLE_DENTIST'?
-                                                        "Xin chào " + account.email.substring(0, account.email.indexOf("@")) : 'Xin chào, vui lòng đăng nhập'}</b>
-                                                    <img src="https://f17-zpg.zdn.vn/3614250697572501720/429b3cec6084a9daf095.jpg" alt="logo" width="30" height="24" />
+                                                        "Xin chào " + account.email.substring(0, account.email.indexOf("@"))+" " : 'Xin chào, vui lòng đăng nhập '}</b>
+                                                    <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="30" height="24" />
                                                 </span>
                                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     {token !== null && auth.rolesId === 'ROLE_DENTIST' ? (

@@ -286,10 +286,12 @@ export default function TabWorkScheduleList({ updateList,setTab }) {
         );
     }, [keyword, listData, page]);
 
+    
+
     return (
         <div className="container mt-3">
             <div className="row">
-                <h3>Danh sách hồ sơ khám</h3>
+                <h3>Danh sách lịch khám</h3>
                 <div className="col-sm-6"></div>
                 {/* SORT AND SEARCH */}
                 <div className="col-sm-6 row ">
@@ -385,6 +387,7 @@ export default function TabWorkScheduleList({ updateList,setTab }) {
                                                         to={`/work-schedule`}
                                                         // `&status=`+val.status
                                                         onClick={() => btnClick(val.id)}>Xem chi tiết</Link>
+                                                        
                                                 </td>
                                             </tr>
                                         )

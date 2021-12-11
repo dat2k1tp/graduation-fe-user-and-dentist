@@ -124,7 +124,7 @@ export default function ShowWorkingScheduleDetails({setUpdateList,booking,setBoo
     return (
         <div>
             <div className="row border border-dark">
-                <h3>Chi tiết lịch làm việc</h3>
+                <h3>Chi tiết lịch khám</h3>
                 <div className="col-md-4 mb-3">
                     <div className="form-group mt-3">
                         <label htmlFor="idB">Id</label>

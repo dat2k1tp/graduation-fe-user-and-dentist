@@ -110,10 +110,10 @@ export default function Login({ setIsLogin, isLogin,setAccount,setAuth }) {
             , height: '100vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
             paddingTop: '5rem'
         }}>
-            <h3 style={{
+            {/* <h3 style={{
                 color: '#00BCD5',
                 fontWeight: 'bold'
-            }} className="fs-1 text-center pt-2">Smile Dental</h3>
+            }} className="fs-1 text-center pt-2">Smile Dental</h3> */}
             <div className="d-flex justify-content-center">
                 <div style={{
                     marginTop: '5rem', width: '25rem', height: '20rem',

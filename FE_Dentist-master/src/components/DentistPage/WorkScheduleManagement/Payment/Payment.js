@@ -313,6 +313,10 @@ export default function Payment() {
                                                 : formatPrice(bkDetail[0].price)
                                         }
 
+                                        <a
+                                            href={`https://pure-stream-96271.herokuapp.com/api/v1/export/download/${booking.id}`}
+                                            className="text-decoration-none fs-5"> <i class='fas fa-print'></i> In ra hóa đơn </a>
+
                                     </span>
                                 </div>
                             </div>
