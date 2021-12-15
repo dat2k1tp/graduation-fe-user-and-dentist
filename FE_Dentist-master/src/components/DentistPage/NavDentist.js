@@ -45,7 +45,7 @@ export default function NavDentist({ setIsLogin, setAccount,setAuth }) {
                 >
 
                 <Link className="navbar-brand mx-4" to="/">
-                    <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="30" height="24" /><span className={classes.span}> Smile Dental</span>
+                    <img src="http://localhost:8080/api/v1/files/download/image?filename=32612e18-c053-4984-a510-ad7256ee0756.jpg" alt="logo" width="30" height="24" style={{borderRadius: "10px"}}/><span className={classes.span}> Smile Dental</span>
                 </Link>
 
                 {/* <input className="form-control mx-4 mt-4" type="search" placeholder="Tìm kiếm" aria-label="Search" style={{ borderRadius: '10px' }} /> */}

@@ -319,21 +319,22 @@ export default function DentistInformation() {
     //validate
     const formDataCccd = register("cccd", {
         required: "Nhập số căn cước công dân",
-        pattern: { value: /((0)+([0-9]{11})\b)/g, message: "Nhập số căn cước đúng định dạng" },
-
+        pattern: { value: /((0)+([0-9]{11})\b)/g, message: "Nhập số căn cước bắt đầu bằng 0, 12 ký tự" },
+        value: formData.cccd
     });
-    const formDataFullName = register("fullName", { required: "Tên bị trống" });
-    const formDataBirthday = register("birthday", { required: "Chọn ngày sinh" });
+    const formDataFullName = register("fullName", { required: "Tên bị trống",value: formData.fullName} );
+    const formDataBirthday = register("birthday", { required: "Chọn ngày sinh",value: formData.birthday });
     const formDataTelephone = register("telephone", {
         required: "Nhập số điện thoại",
         pattern: { value: /((0)+([0-9]{9})\b)/g, message: "Nhập số điện thoại đúng định dạng" },
+        value: formData.telephone
     });
-    const formDataExp = register("exp", { required: "Nhập kinh nghiệm(mô tả)" });
-    const formDataGender = register("gender", { required: true });
-    const formDataProvinces = register("provinces", { required: true });
-    const formDataDistricts = register("districts", { required: true });
-    const formDataCommunes = register("communes", { required: true });
-    const formDataDiaChi = register("diachi", { required: "Nhập địa chỉ nhà" });
+    const formDataExp = register("exp", { required: "Nhập kinh nghiệm(mô tả)",value: formData.exp });
+    const formDataGender = register("gender", { required: true,value: formData.gender });
+    const formDataProvinces = register("provinces", { required: true,value: provincesID});
+    const formDataDistricts = register("districts", { required: true,value: districtsID });
+    const formDataCommunes = register("communes", { required: true,value: formData.communes.id });
+    const formDataDiaChi = register("diachi", { required: "Nhập địa chỉ nhà",value: formData.diachi });
 
     return (
         <div className="pt-4  text-center" style={{ backgroundColor: 'rgb(246, 249, 249)', minHeight: '950px' }}>

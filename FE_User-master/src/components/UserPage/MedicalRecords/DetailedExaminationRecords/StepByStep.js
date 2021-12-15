@@ -169,6 +169,7 @@ export default function StepByStep({ setUpdateStatus }) {
                     </div>
                 )}
             </div>
+            
             <ModalCancelMedicalRecords booking={booking}
                 setActiveStep={setActiveStep}
                 setUpdateStatus={setUpdateStatus}

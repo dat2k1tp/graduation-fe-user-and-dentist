@@ -90,7 +90,7 @@ export default function ListComment({ listComment, setListComment, idxPost1 }) {
                         <div className="card border border-white" key={idx}>
                             <hr className=" border border border-1" />
                             <div className="card-body ">
-                                <img src="https://mdbootstrap.com/img/new/fluid/nature/020.jpg"
+                                <img src="http://localhost:8080/api/v1/files/download/image?filename=32612e18-c053-4984-a510-ad7256ee0756.jpg"
                                     className="img-fluid rounded-circle float-start me-1" alt="..."
                                     style={{ width: '4rem', height: '4rem' }} />
                                 <i className='fas fa-exclamation-circle 

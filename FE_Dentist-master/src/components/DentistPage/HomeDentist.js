@@ -25,7 +25,7 @@ import ErrorPage from "../service/ErrorPage"
 export default function HomeDentist() {
 
     const [isLogin, setIsLogin] = useState
-    (localStorage.getItem("auth") !== null ? true : false);
+        (localStorage.getItem("auth") !== null ? true : false);
 
     //GET DATA NGƯỜI DÙNG TỪ LOCAL STORAGE(ID,ROLE)
     const [auth, setAuth] = useState({});
@@ -169,7 +169,7 @@ export default function HomeDentist() {
             value === watch("newPassword", "") || "Mật khẩu mới không đúng"
     });
 
-   
+
 
 
     return (
@@ -182,7 +182,7 @@ export default function HomeDentist() {
                     <aside className="col-12 col-md-3 col-xl-2 p-0 bg-dark flex-shrink-1">
                         {token !== null && auth.rolesId === 'ROLE_DENTIST' ? (<NavDentist
                             setIsLogin={setIsLogin}
-                            setAccount={setAccount} setAuth={setAuth}/>) : ""}
+                            setAccount={setAccount} setAuth={setAuth} />) : ""}
                     </aside>
                     {/* sidebar */}
 
@@ -190,15 +190,18 @@ export default function HomeDentist() {
                     <main className="col-12 col-md-9 px-0 flex-grow-1">
                         <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{ boxShadow: '1px 3px #f1f1f1' }}>
                             <div className="container-fluid">
+                                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                    <span className="navbar-toggler-icon"></span>
+                                </button>
                                 <div className="collapse navbar-collapse " id="navbarSupportedContent">
                                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 "></ul>
                                     <form className="d-flex">
                                         <div className="navbar-nav">
                                             <li className="nav-item dropdown">
                                                 <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <b>{token !== null && account.email !== "" && typeof (account.email) != 'undefined' && auth.rolesId === 'ROLE_DENTIST'?
-                                                        "Xin chào " + account.email.substring(0, account.email.indexOf("@"))+" " : 'Xin chào, vui lòng đăng nhập '}</b>
-                                                    <img src="http://localhost:8080/api/v1/files/download/image?filename=logo-smile-dental.jpg" alt="logo" width="30" height="24" />
+                                                    <b>{token !== null && account.email !== "" && typeof (account.email) != 'undefined' && auth.rolesId === 'ROLE_DENTIST' ?
+                                                        "Xin chào " + account.email.substring(0, account.email.indexOf("@")) + " " : 'Xin chào, vui lòng đăng nhập '}</b>
+                                                    <img src="http://localhost:8080/api/v1/files/download/image?filename=32612e18-c053-4984-a510-ad7256ee0756.jpg" alt="logo" width="30" height="24" />
                                                 </span>
                                                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                     {token !== null && auth.rolesId === 'ROLE_DENTIST' ? (
@@ -312,9 +315,9 @@ export default function HomeDentist() {
                                                 (
                                                     <Route path="/login">
                                                         <Login setIsLogin={setIsLogin}
-                                                            isLogin={isLogin} 
+                                                            isLogin={isLogin}
                                                             setAccount={setAccount}
-                                                            setAuth={setAuth}/>
+                                                            setAuth={setAuth} />
                                                     </Route>
                                                 )
                                         }
@@ -333,7 +336,7 @@ export default function HomeDentist() {
                                                         <Route path="/dentist-infomation">
                                                             <DentistInformation />
                                                         </Route>
-                                                        
+
                                                         <Route path="/statistcal">
                                                             <Statistical />
                                                         </Route>
@@ -350,9 +353,9 @@ export default function HomeDentist() {
                                                 :
                                                 (
                                                     // <React.Fragment>
-                                                        <Route path="*">
-                                                            <ErrorPage />
-                                                        </Route>
+                                                    <Route path="*">
+                                                        <ErrorPage />
+                                                    </Route>
                                                     // </React.Fragment>
                                                 )
                                         }

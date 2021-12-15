@@ -4,10 +4,38 @@ import http from "../../../service/http-common"
 import { useEffect, useState } from "react";
 import { formatPrice } from "../../../../utils/moment-helper";
 import moment from "moment";
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+import { dark } from '@material-ui/core/styles/createPalette';
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        display: 'flex',
+        alignItems: 'center',
+    },
+    wrapper: {
+        margin: theme.spacing(1),
+        position: 'relative',
+    },
+    buttonProgress: {
+        color: dark[900],
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        marginTop: -35,
+        marginLeft: -10,
+    },
+}));
 
 export default function Payment() {
 
     const [updateVoucher, setUpdateVoucher] = useState(0);
+    const classes = useStyles();
+    const [loading, setLoading] = React.useState(false);
+    // const [success, setSuccess] = React.useState(false);
+    const timer = React.useRef();
+
 
 
     const {
@@ -65,7 +93,7 @@ export default function Payment() {
             id: "",
             bookingId: "",
             serviceId: "",
-            voucherId: "",
+            voucherId: null,
             price: ""
         }
     ])
@@ -210,6 +238,49 @@ export default function Payment() {
             })
     }
 
+    //down load hóa đơn
+    const btnIn = () => {
+        http({
+            method: 'GET',
+            url: `http://localhost:8080/api/v1/export/download/${booking.id}`,
+            responseType: 'blob',
+        })
+            .then((response) => {
+
+                const url = window.URL.createObjectURL(new Blob([response.data]));
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', 'hoa-don.docx'); //or any other extension
+                document.body.appendChild(link);
+                link.click();
+                console.log("IN THANH CONG");
+
+            })
+            .catch((error) => {
+                console.log(error, error.response);
+            })
+
+    }
+
+    //button reload
+    React.useEffect(() => {
+        return () => {
+            clearTimeout(timer.current);
+        };
+    }, []);
+
+    const handleButtonClick = () => {
+        btnIn();
+        if (!loading) {
+            // setSuccess(false);
+            setLoading(true);
+            timer.current = window.setTimeout(() => {
+                // setSuccess(true);
+                setLoading(false);
+            }, 3500);
+        }
+    };
+
     // console.log(bkDetailNotVoucher.length>0?parseFloat(bkDetailNotVoucher[0].price) 
     //     -parseFloat(bkDetailNotVoucher[0].price)*parseFloat(voucherU.sale)/100:"");
     return (
@@ -294,9 +365,9 @@ export default function Payment() {
                                     }
 
                                 </div>
-                                <div>Tổng số tiền phải thanh toán là:
 
-                                    <span className="fw-bold">
+                                <div className="d-flex justify-content-center">Tổng số tiền phải thanh toán là:
+                                    <span className="fw-bold ms-1">
                                         {
                                             bkDetail[0].voucherId !== null
                                                 && bkDetail[0].voucherId !== ""
@@ -312,13 +383,30 @@ export default function Payment() {
 
                                                 : formatPrice(bkDetail[0].price)
                                         }
-
-                                        <a
-                                            href={`https://pure-stream-96271.herokuapp.com/api/v1/export/download/${booking.id}`}
-                                            className="text-decoration-none fs-5"> <i class='fas fa-print'></i> In ra hóa đơn </a>
-
                                     </span>
+
+                                    {/* dùng trên server */}
+                                    {/* <a
+                                            href={`https://pure-stream-96271.herokuapp.com/api/v1/export/download/${booking.id}`}
+                                            className="text-decoration-none fs-5"> <i className='fas fa-print'></i> In ra hóa đơn </a> */}
+
+                                    {/* dùng trên local */}
+                                    <div className={classes.root}>
+                                        <div className={classes.wrapper}>
+                                            <button
+                                                className="fs-6 btn-sm btn btn-outline-info ms-2 mb-5"
+                                                disabled={loading}
+                                                onClick={handleButtonClick}
+                                            >
+                                                <i className='fas fa-print'></i> In ra hóa đơn
+                                            </button>
+                                            {loading && <CircularProgress size={24} className={classes.buttonProgress} />}
+                                        </div>
+                                    </div>
+
                                 </div>
+
+
                             </div>
 
 

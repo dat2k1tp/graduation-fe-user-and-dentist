@@ -42,7 +42,7 @@ function Header() {
                 </div>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src={srcUrl + "cf81d7b7-b2bf-4266-bccd-a6a9bdec0889.jpg"}
+                        <img src={srcUrl + "06958a48-29a9-4bac-8d6e-2666adcb5398.jpg"}
                             className="d-block w-100" alt="..." style={{ width: '20rem', height: '45rem' }} />
                         <div className="carousel-caption d-none d-md-block">
                             <h5>Smile Dental</h5>
@@ -50,7 +50,7 @@ function Header() {
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img src={srcUrl + "ebc9c737-53e4-4c1f-b1f3-8bbc78ab6c18.jpg"}
+                        <img src={srcUrl + "4dbe3d61-141e-4118-841a-e52f249c553d.jpg"}
                             className="d-block w-100" alt="..." style={{ width: '20rem', height: '45rem' }} />
                         <div className="carousel-caption d-none d-md-block">
                             <h5>Smile Dental</h5>
@@ -58,7 +58,7 @@ function Header() {
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img src={srcUrl + "06d3b98d-192e-4bae-8503-3cf18d9740d2.jpg"}
+                        <img src={srcUrl + "5a005617-709a-47a2-80f9-3151a37a3227.jpg"}
                             className="d-block w-100" alt="..." style={{ width: '20rem', height: '45rem' }} />
                         <div className="carousel-caption d-none d-md-block">
                             <h5>Smile Dental</h5>

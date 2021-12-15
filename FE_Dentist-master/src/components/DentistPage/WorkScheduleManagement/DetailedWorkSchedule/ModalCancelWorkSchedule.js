@@ -78,7 +78,7 @@ export default function ModalCancelWorkSchedule({ booking,
                                     ) :
                                     (
                                         <h4 className="text-center">
-                                            Cập nhật lịch làm việc thành công
+                                            Lịch khám đã hủy
                                         </h4>
                                     )
                             }

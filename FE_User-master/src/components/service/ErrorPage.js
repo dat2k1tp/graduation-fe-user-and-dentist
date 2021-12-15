@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function ErrorPage(){
     return(
-        <div style={{backgroundImage: `URL("http://localhost:8080/api/v1/files/download/image?filename=background-error-page.jpg")`
+        <div style={{backgroundImage: `URL("http://localhost:8080/api/v1/files/download/image?filename=58d9fa85-c4dd-4267-af26-7d8b6501a811.jpg")`
 		, height: '100vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
 		<div style={{minHeight:"720px", paddingTop:"70px"}}>
 

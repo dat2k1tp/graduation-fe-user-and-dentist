@@ -196,7 +196,7 @@ export default function FormBook() {
     id: "",
     bookingId: "",
     serviceId: "",
-    voucherId: "",
+    voucherId: null,
     price: "",
   });
 

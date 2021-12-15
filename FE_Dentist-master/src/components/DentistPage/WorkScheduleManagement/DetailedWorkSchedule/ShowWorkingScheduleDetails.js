@@ -119,7 +119,7 @@ export default function ShowWorkingScheduleDetails({setUpdateList,booking,setBoo
     const bookingDayOfWeek = register("dayOfWeek", { required: true });
 
 
-    // console.log(updateList)
+    // console.log(booking.scheduleTime.id);
 
     return (
         <div>

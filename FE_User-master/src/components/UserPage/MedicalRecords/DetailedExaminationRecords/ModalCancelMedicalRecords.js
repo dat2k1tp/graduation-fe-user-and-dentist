@@ -107,7 +107,7 @@ export default function ModalCancelMedicalRecords({ booking,
                                     ) :
                                     (
                                         <h4 className="text-center">
-                                            Cập nhật lịch khám thành công
+                                            Lịch khám đã hủy
                                         </h4>
                                     )
                             }

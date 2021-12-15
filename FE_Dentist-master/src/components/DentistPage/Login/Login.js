@@ -85,10 +85,10 @@ export default function Login({ setIsLogin, isLogin,setAccount,setAuth }) {
                         setIsLogin(true)
                         alert('Đăng nhập thành công')
                         //chuyen huong trang
-                        history.replace("/")
+                        history.replace("/work-schedule")
                     } else {
                         setIsLogin(false);
-                        alert('Tài khoản không hợp lệ')
+                        alert('Đăng nhập thất bại')
                     }
 
 

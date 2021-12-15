@@ -28,11 +28,11 @@ function Partner() {
             <div id="carouselExampleControls" className="carousel slide" data-bs-ride="carousel">
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img src="http://localhost:8080/api/v1/files/download/image?filename=fcb600cf-6479-4c1c-8fbf-7ef26f5a7539.JPG" className="d-block w-100"
+                        <img src="http://localhost:8080/api/v1/files/download/image?filename=28c98353-1d14-406b-ac97-5713c12db0e9.JPG" className="d-block w-100"
                             style={{ width: '20rem', height: '18rem' }} alt="..." />
                     </div>
                     <div className="carousel-item">
-                        <img src="http://localhost:8080/api/v1/files/download/image?filename=50382201-8591-4557-81e3-20e11df9e815.JPG" className="d-block w-100"
+                        <img src="http://localhost:8080/api/v1/files/download/image?filename=fca3c371-18c1-4146-9406-26b655a98573.JPG" className="d-block w-100"
                             alt="..." style={{ width: '20rem', height: '18rem' }} />
                     </div>
                 </div>

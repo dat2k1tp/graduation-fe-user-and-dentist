@@ -99,7 +99,9 @@ export default function TabDetailedWorkSchedule({ setUpdateList, updateList, set
 
             </div>
             <ModalConclusion booking={booking} 
-            setBooking={setBooking}/>
+            setBooking={setBooking} 
+            setUpdateList={setUpdateList}
+            updateList={updateList}/>
 
         </div>
     )

@@ -86,7 +86,7 @@ export default function Login({ setIsLogin, isLogin,setAccount,setAuth }) {
                         history.replace("/");
                     } else {
                         setIsLogin(false);
-                        alert('Tài khoản không hợp lệ')
+                        alert('Đăng nhập thất bại')
                     }
 
 
@@ -106,7 +106,7 @@ export default function Login({ setIsLogin, isLogin,setAccount,setAuth }) {
     return (
 
         <div style={{
-            backgroundImage: `URL("http://localhost:8080/api/v1/files/download/image?filename=background-img-login.jpg")`
+            backgroundImage: `URL("http://localhost:8080/api/v1/files/download/image?filename=e2071e4e-d806-4ad7-aeea-17ac22f386bf.jpg")`
             , height: '100vh', backgroundRepeat: 'no-repeat', backgroundSize: 'cover',
             paddingTop: '5rem'
         }}>

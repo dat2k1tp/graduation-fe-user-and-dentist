@@ -44,7 +44,7 @@ function getStepContent(stepIndex) {
     }
 }
 
-export default function StepByStep({ setUpdateList,booking}) {
+export default function StepByStep({ setUpdateList,booking,updateList}) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
     const completed = {}
@@ -76,13 +76,14 @@ export default function StepByStep({ setUpdateList,booking}) {
         }
     };
 
+    // console.log(updateList);
     //UPDATE STATUS
     const updateStatus = (status) => {
         console.log(status)
         if (
             booking.customerProfile.accounts !== null &&
             typeof (booking.customerProfile.accounts) !== 'undefined') {
-            console.log(booking.customerProfile.accounts);
+            // console.log(booking.customerProfile.accounts);
             http({
                 url: '/booking/' + id + "/status/" + status,
                 method: 'PUT'

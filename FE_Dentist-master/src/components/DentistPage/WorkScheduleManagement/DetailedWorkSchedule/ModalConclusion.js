@@ -1,14 +1,14 @@
 import { useForm } from "react-hook-form";
 import http from '../../../service/http-common'
 
-export default function ModalConclusion({ booking,setBooking }) {
+export default function ModalConclusion({ booking,setBooking,setUpdateList }) {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmitHandle = (data) => {
 
         onUpdateBooking(data);
 
     }
- 
+  
     //PUT DATA kết quả
     const onUpdateBooking = (data) => {
         // console.log(booking);
@@ -30,7 +30,7 @@ export default function ModalConclusion({ booking,setBooking }) {
                 });
                 console.log("UPDATE KẾT QUẢ  THÀNH CÔNG");
                 alert("Lưu thành công")
-
+                setUpdateList((prevActiveStep) => prevActiveStep + 1)
 
             })
             .catch((error) => {
