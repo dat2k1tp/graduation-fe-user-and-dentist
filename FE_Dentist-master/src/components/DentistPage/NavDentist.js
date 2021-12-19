@@ -50,13 +50,13 @@ export default function NavDentist({ setIsLogin, setAccount,setAuth }) {
 
                 {/* <input className="form-control mx-4 mt-4" type="search" placeholder="Tìm kiếm" aria-label="Search" style={{ borderRadius: '10px' }} /> */}
 
-                <nav className="navbar navbar-dark bg-dark mt-1 ms-1">
+                {/* <nav className="navbar navbar-dark bg-dark mt-1 ms-1">
                     <div className="container-fluid">
                         <Link className="text-decoration-none" to="/" style={{ fontSize: '15px', color: 'white' }}>
                             <i className="fas fa-home"></i> <span > TRANG CHỦ</span>
                         </Link>
                     </div>
-                </nav>
+                </nav> */}
 
                 <nav className="navbar navbar-dark bg-dark mt-1 ms-1">
                     <div className="container-fluid">

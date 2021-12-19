@@ -212,7 +212,7 @@ export default function ListOfMedicalRecords({ updateStatus, setTab }) {
                     a.dentistProfile.fullName.localeCompare(b.dentistProfile.fullName)));
 
             }
-            if (value === 'descName' || value === 'no') {
+            if (value === 'descName') {
                 setFilterData(filterData.sort((a, b) =>
                     b.dentistProfile.fullName.localeCompare(a.dentistProfile.fullName)));
             }

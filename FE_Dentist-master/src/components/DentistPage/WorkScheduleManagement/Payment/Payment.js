@@ -277,7 +277,7 @@ export default function Payment() {
             timer.current = window.setTimeout(() => {
                 // setSuccess(true);
                 setLoading(false);
-            }, 3500);
+            },5000);
         }
     };
 

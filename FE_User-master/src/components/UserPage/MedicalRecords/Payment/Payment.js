@@ -3,7 +3,7 @@ import InfoService from "../DetailedExaminationRecords/InfoService";
 import http from "../../../service/http-common"
 import { useEffect, useState } from "react";
 import { formatPrice } from "../../../../utils/moment-helper";
-import moment from "moment";
+// import moment from "moment";
 
 export default function Payment() {
 
@@ -113,102 +113,102 @@ export default function Payment() {
 
 
     //CHECK VOUCHER CÓ TỒN TẠI HAY KO
-    const checkVoucherExists = (voucherId) => {
-        http({
-            method: 'GET',
-            url: 'http://localhost:8080/api/v1/vouchers/byId/' + voucherId,
-        })
-            .then((response) => {
-                const { data } = response;
-                if (data.data !== null) {
-                    checkVoucherDate(data.data);
-                } else {
-                    alert("Mã giảm giá không tồn tại")
-                }
-            })
-            .catch((error) => {
-                console.log(error, error.response)
-            })
-    }
+    // const checkVoucherExists = (voucherId) => {
+    //     http({
+    //         method: 'GET',
+    //         url: 'http://localhost:8080/api/v1/vouchers/byId/' + voucherId,
+    //     })
+    //         .then((response) => {
+    //             const { data } = response;
+    //             if (data.data !== null) {
+    //                 checkVoucherDate(data.data);
+    //             } else {
+    //                 alert("Mã giảm giá không tồn tại")
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.log(error, error.response)
+    //         })
+    // }
 
     //CHECK HẠN SỬ DỤNG VOUCHER
-    const checkVoucherDate = (voucher) => {
-        let yourDate = new Date();
-        // console.log(moment(yourDate).format("YYYY-MM-DD HH:mm:ss")
-        // +"---"+moment("2021-11-26T13:59").format("YYYY-MM-DD HH:mm:ss"));
+    // const checkVoucherDate = (voucher) => {
+    //     let yourDate = new Date();
+    //     // console.log(moment(yourDate).format("YYYY-MM-DD HH:mm:ss")
+    //     // +"---"+moment("2021-11-26T13:59").format("YYYY-MM-DD HH:mm:ss"));
 
-        http({
-            method: 'GET',
-            url: 'http://localhost:8080/api/v1/vouchers/checkExprDate?endDate='
-                + moment(voucher.end).format("YYYY-MM-DD HH:mm:ss")
-                + "&nowDate=" + moment(yourDate).format("YYYY-MM-DD HH:mm:ss"),
-        })
-            .then((response) => {
-                const { data } = response;
-                const a = voucher;
-                if (data.data.length > 0) {
-                    setVoucherU({
-                        ...voucherU,
-                        a
-                    });
-                    onUpdateBookingDetail(voucher, bkDetail);
+    //     http({
+    //         method: 'GET',
+    //         url: 'http://localhost:8080/api/v1/vouchers/checkExprDate?endDate='
+    //             + moment(voucher.end).format("YYYY-MM-DD HH:mm:ss")
+    //             + "&nowDate=" + moment(yourDate).format("YYYY-MM-DD HH:mm:ss"),
+    //     })
+    //         .then((response) => {
+    //             const { data } = response;
+    //             const a = voucher;
+    //             if (data.data.length > 0) {
+    //                 setVoucherU({
+    //                     ...voucherU,
+    //                     a
+    //                 });
+    //                 onUpdateBookingDetail(voucher, bkDetail);
 
-                } else {
-                    alert("Mã giảm giá đã hết hạn");
-                }
-            })
-            .catch((error) => {
-                console.log(error, error.response)
-            })
-    }
+    //             } else {
+    //                 alert("Mã giảm giá đã hết hạn");
+    //             }
+    //         })
+    //         .catch((error) => {
+    //             console.log(error, error.response)
+    //         })
+    // }
 
 
     // CẬP NHẬT LÊN BOOKING DETAIL
-    const onUpdateBookingDetail = (voucher, bookingDetail) => {
-        let formData = {
-            id: bookingDetail[0].id,
-            bookingId: bookingDetail[0].bookingId,
-            serviceId: bookingDetail[0].serviceId,
-            voucherId: voucher.id,
-            price: bookingDetail[0].price
-        }
-        http({
-            method: 'PUT',
-            url: 'http://localhost:8080/api/v1/booking/detail/' + bookingDetail[0].id,
-            data: formData
-        })
-            .then((response) => {
-                const { data } = response.data;
-                setBkDetail([
-                    data
-                ]);
-                //disable voucher
-                onSoftDeleteVoucher(voucher);
-            })
-            .catch((error) => {
-                console.log(error, error.response)
-            })
-    }
+    // const onUpdateBookingDetail = (voucher, bookingDetail) => {
+    //     let formData = {
+    //         id: bookingDetail[0].id,
+    //         bookingId: bookingDetail[0].bookingId,
+    //         serviceId: bookingDetail[0].serviceId,
+    //         voucherId: voucher.id,
+    //         price: bookingDetail[0].price
+    //     }
+    //     http({
+    //         method: 'PUT',
+    //         url: 'http://localhost:8080/api/v1/booking/detail/' + bookingDetail[0].id,
+    //         data: formData
+    //     })
+    //         .then((response) => {
+    //             const { data } = response.data;
+    //             setBkDetail([
+    //                 data
+    //             ]);
+    //             //disable voucher
+    //             onSoftDeleteVoucher(voucher);
+    //         })
+    //         .catch((error) => {
+    //             console.log(error, error.response)
+    //         })
+    // }
 
     // DISABLE VOUCHER 
-    const onSoftDeleteVoucher = (voucher) => {
-        http({
-            method: 'PUT',
-            url: 'http://localhost:8080/api/v1/vouchers/soft-delete/' + voucher.id,
-        })
-            .then((response) => {
-                // const { data } = response;
-                alert("Mã giảm giá đã được áp dụng");
-                //load lại list service
-                setUpdateVoucher((prevActiveStep) => prevActiveStep + 1);
+    // const onSoftDeleteVoucher = (voucher) => {
+    //     http({
+    //         method: 'PUT',
+    //         url: 'http://localhost:8080/api/v1/vouchers/soft-delete/' + voucher.id,
+    //     })
+    //         .then((response) => {
+    //             // const { data } = response;
+    //             alert("Mã giảm giá đã được áp dụng");
+    //             //load lại list service
+    //             setUpdateVoucher((prevActiveStep) => prevActiveStep + 1);
 
 
-            })
-            .catch((error) => {
-                console.log(error, error.response);
-                console.log(error);
-            })
-    }
+    //         })
+    //         .catch((error) => {
+    //             console.log(error, error.response);
+    //             console.log(error);
+    //         })
+    // }
 
     // console.log(bkDetailNotVoucher.length>0?parseFloat(bkDetailNotVoucher[0].price) 
     //     -parseFloat(bkDetailNotVoucher[0].price)*parseFloat(voucherU.sale)/100:"");
@@ -217,7 +217,7 @@ export default function Payment() {
             <div className="row">
                 {/* SERVICE */}
                 <div className="col-sm-12 border border-dark mb-2">
-                    <InfoService updateVoucher={updateVoucher} />
+                    <InfoService updateVoucher={updateVoucher} setUpdateVoucher={setUpdateVoucher}/>
                 </div>
 
                 {/* VOUCHER */}

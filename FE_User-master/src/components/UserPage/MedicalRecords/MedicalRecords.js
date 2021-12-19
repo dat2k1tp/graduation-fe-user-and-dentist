@@ -57,7 +57,6 @@ export default function MedicalRecords() {
                                 onChange={handleChange}
                                 indicatorColor="primary"
                                 textColor="primary"
-                                textColor="primary"
                                 variant="scrollable"
                                 scrollButtons="auto"
                                 aria-label="scrollable auto tabs example"

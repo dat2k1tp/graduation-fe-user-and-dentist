@@ -1,12 +1,18 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Stepper from '@material-ui/core/Stepper';
 import Step from '@material-ui/core/Step';
-import StepButton from '@material-ui/core/StepButton';
 import Typography from '@material-ui/core/Typography';
 import http from '../../../service/http-common'
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import ModalCancelWorkSchedule from './ModalCancelWorkSchedule';
+import StepConnector from '@material-ui/core/StepConnector';
+import clsx from 'clsx';
+import StepLabel from '@material-ui/core/StepLabel';
+import PropTypes from 'prop-types';
+import LocalHospitalIcon from '@material-ui/icons/LocalHospital';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import AssignmentIcon from '@material-ui/icons/Assignment';
 
 //css
 const useStyles = makeStyles((theme) => ({
@@ -44,17 +50,16 @@ function getStepContent(stepIndex) {
     }
 }
 
-export default function StepByStep({ setUpdateList,booking,updateList}) {
+export default function StepByStep({ setUpdateList, booking, updateList }) {
     const classes = useStyles();
     const [activeStep, setActiveStep] = React.useState(0);
-    const completed = {}
     const steps = getSteps();
     let id = Number(sessionStorage.getItem("bookingId"));
 
 
 
 
-    
+
 
 
     useEffect(() => {
@@ -68,7 +73,7 @@ export default function StepByStep({ setUpdateList,booking,updateList}) {
     const handleNext = () => {
         const confirm = window.confirm("Bạn muốn cập nhật lịch khám này không ?");
         if (confirm === true) {
-            
+
             setActiveStep((prevActiveStep) => prevActiveStep + 1);
             updateStatus(activeStep + 1);
             // setUpdateList(activeStep+1);
@@ -91,7 +96,7 @@ export default function StepByStep({ setUpdateList,booking,updateList}) {
                 .then((response) => {
                     console.log("UPDATE STATUS SUCCESS");
                     setUpdateList((prevActiveStep) => prevActiveStep + 1);
-                    if(status===2){
+                    if (status === 2) {
                         alert("Vui lòng cập nhật kết quả khám")
                     }
 
@@ -109,6 +114,92 @@ export default function StepByStep({ setUpdateList,booking,updateList}) {
 
 
 
+    //SET UP CSS THANH TRẠNG THÁI
+    const ColorlibConnector = withStyles({
+        alternativeLabel: {
+            top: 22,
+        },
+        active: {
+            '& $line': {
+                borderColor: '#00BCD5',
+            },
+        },
+        completed: {
+            '& $line': {
+                borderColor: '#00BCD5',
+            },
+        }
+        ,
+        line: {
+            borderColor: '#eaeaf0',
+            borderTopWidth: 3,
+            borderRadius: 1,
+        },
+    })(StepConnector);
+
+    const useColorlibStepIconStyles = makeStyles({
+        root: {
+            backgroundColor: '#ccc',
+            zIndex: 1,
+            color: '#fff',
+            width: 50,
+            height: 50,
+            display: 'flex',
+            borderRadius: '50%',
+            justifyContent: 'center',
+            alignItems: 'center',
+        },
+        active: {
+            color: 'white',
+            backgroundColor: '#00BCD5',
+            boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
+        },
+        completed: {
+            color: 'white',
+            backgroundColor: '#00BCD5'
+        },
+    });
+
+    function ColorlibStepIcon(props) {
+        const classes = useColorlibStepIconStyles();
+        const { active, completed } = props;
+
+        const icons = {
+            1: <AssignmentIcon style={{ fontSize: 27 }} />,
+            2: <LocalHospitalIcon style={{ fontSize: 29 }} />,
+            3: <CheckBoxIcon style={{ fontSize: 27 }} />,
+        };
+
+        return (
+            <div
+                className={clsx(classes.root, {
+                    [classes.active]: active,
+                    [classes.completed]: completed,
+                })}
+            >
+                {icons[String(props.icon)]}
+            </div>
+        );
+    }
+
+    ColorlibStepIcon.propTypes = {
+        /**
+         * Whether this step is active.
+         */
+        active: PropTypes.bool,
+        /**
+         * Mark the step as completed. Is passed to child components.
+         */
+        completed: PropTypes.bool,
+        /**
+         * The label displayed in the step icon.
+         */
+        icon: PropTypes.node,
+    };
+    //END SET UP CSS THANH TRẠNG THÁI
+
+
+
     return (
         <div className={classes.root}>
             <h3>Trạng thái</h3>
@@ -116,12 +207,10 @@ export default function StepByStep({ setUpdateList,booking,updateList}) {
                 activeStep !== 3 ? (
 
 
-                    <Stepper activeStep={activeStep}>
+                    <Stepper activeStep={activeStep} connector={<ColorlibConnector />}>
                         {steps.map((label, index) => (
                             <Step key={label}>
-                                <StepButton onClick={handleStep(index)} completed={completed[index]}>
-                                    {label}
-                                </StepButton>
+                                <StepLabel onClick={handleStep(index)} StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
                             </Step>
                         ))}
                     </Stepper>
@@ -142,8 +231,8 @@ export default function StepByStep({ setUpdateList,booking,updateList}) {
                         <div className="d-flex justify-content-center mb-2">
                             {
                                 activeStep !== 3 && activeStep !== 2 ? (
-                                    <button className="btn btn-info" 
-                                    onClick={handleNext}>
+                                    <button className="btn btn-info"
+                                        onClick={handleNext}>
                                         {activeStep === 1 ? 'Kết thúc' : 'Tiếp tục'}
                                     </button>
                                 ) : ""

@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 // import { useEffect, useState } from 'react';
 // import http from '../service/http-common'
 
@@ -117,8 +117,10 @@ export default function Login({ setIsLogin, isLogin,setAccount,setAuth }) {
             <div className="d-flex justify-content-center">
                 <div style={{
                     marginTop: '5rem', width: '25rem', height: '20rem',
-                    border: '1px solid gray', backgroundColor: 'rgb(246, 249, 249)',
-                    boxShadow: '0 1rem 2rem 0 rgba(0, 0, 0, 0.2)'
+                    // border: '1px solid gray',
+                     backgroundColor: 'white',
+                    boxShadow: '0 1rem 2rem 0 rgba(0, 0, 0, 0.2)',
+                    borderRadius:"0.5rem"
                 }}>
                     <form onSubmit={handleSubmit(onHandleSubmit)} className="card-body text-center pt-4">
                         <h3>Đăng nhập</h3>
@@ -136,9 +138,17 @@ export default function Login({ setIsLogin, isLogin,setAccount,setAuth }) {
                             <input type="password" className="form-control" id="passwordDN"
                                 {...register("password", { required: true })} />
                             {errors.password && <span className="text-danger">Không để trống password</span>}
-                        </div><br />
-                        <button type="submit" className="btn btn-info">Đăng nhập</button>
+                        </div>
+                        <div className="d-flex justify-content-end mt-1">
+                         <Link to="/register" className="text-decoration-none fst-italic"
+                         style={{fontSize:'0.95rem'}}>Đăng ký tài khoản?</Link>
+                        </div>
+                        <button type="submit" className="btn btn-info mt-2">Đăng nhập</button>
+                      
+
+
                     </form>
+
                 </div>
             </div>
 

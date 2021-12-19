@@ -3,10 +3,10 @@ import { useForm } from "react-hook-form";
 import http from '../../../service/http-common'
 
 export default function ModalCancelMedicalRecords({ booking,
-    setActiveStep, activeStep,setUpdateStatus }) {
+    setActiveStep, activeStep, setUpdateStatus }) {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    
+
     const onSubmitHandle = (data) => {
         const confirm = window.confirm("Bạn muốn hủy lịch khám này không ?");
         if (confirm === true) {
@@ -30,7 +30,7 @@ export default function ModalCancelMedicalRecords({ booking,
         })
             .then((response) => {
                 console.log("UPDATE LÝ DO THÀNH CÔNG");
-                document.getElementById('message-text').value = ""
+                // document.getElementById('message-text').value = ""
                 setActiveStep(3);
                 updateStatus();
 
@@ -82,7 +82,7 @@ export default function ModalCancelMedicalRecords({ booking,
                             <h5 className="modal-title" id="exampleModalLabel">
 
                                 {
-                                    activeStep !== 3 ? "Nhập lý do hủy lịch" : "Thông báo"
+                                    activeStep !== 3 ? "Chọn lý do hủy lịch" : "Thông báo"
                                 }
                             </h5>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -94,14 +94,75 @@ export default function ModalCancelMedicalRecords({ booking,
                                     (
                                         <div className="modal-body">
                                             <div className="mb-3">
-                                                <label htmlFor="message-text" className="col-form-label">Lý do hủy:</label>
+                                                {/* <label htmlFor="message-text" className="col-form-label">Lý do hủy:</label>
                                                 <textarea className="form-control" id="message-text"
                                                     rows="3" {...register("ghichu", {
                                                         required: "Không để trống lý do",
                                                         maxLength: { value: 300, message: "Lý do không quá 300 ký tự" }
                                                     })}></textarea>
-                                                {errors.ghichu && <span className="text-danger">{errors.ghichu.message}</span>}
-
+                                                {errors.ghichu && <span className="text-danger">{errors.ghichu.message}</span>} */}
+                                                <p>Vui lòng chọn lý do để hủy lịch đặt:</p>
+                                                <label htmlFor="field-1">
+                                                    <input
+                                                        {...register("ghichu", { required: true })}
+                                                        type="radio"
+                                                        name="ghichu"
+                                                        value="Thủ tục quá rắc rối"
+                                                        id="field-1"
+                                                    />
+                                                    <span> Thủ tục quá rắc rối</span>
+                                                </label><br />
+                                                <label htmlFor="field-2">
+                                                    <input
+                                                        {...register("ghichu", { required: true })}
+                                                        type="radio"
+                                                        name="ghichu"
+                                                        value="Tìm thấy giá dịch vụ rẻ hơn ở chỗ khác"
+                                                        id="field-2"
+                                                    />
+                                                    <span> Tìm thấy giá dịch vụ rẻ hơn ở chỗ khác</span>
+                                                </label><br />
+                                                <label htmlFor="field-3">
+                                                    <input
+                                                        {...register("ghichu", { required: true })}
+                                                        type="radio"
+                                                        name="ghichu"
+                                                        value="Dịch vụ không được tốt"
+                                                        id="field-3"
+                                                    />
+                                                    <span> Dịch vụ không được tốt</span>
+                                                </label><br />
+                                                <label htmlFor="field-4">
+                                                    <input
+                                                        {...register("ghichu", { required: true })}
+                                                        type="radio"
+                                                        name="ghichu"
+                                                        value="Xác nhận lịch đặt quá chậm"
+                                                        id="field-4"
+                                                    />
+                                                    <span> Xác nhận lịch đặt quá chậm</span>
+                                                </label><br />
+                                                <label htmlFor="field-5">
+                                                    <input
+                                                        {...register("ghichu", { required: true })}
+                                                        type="radio"
+                                                        name="ghichu"
+                                                        value="Muốn thay đổi bác sĩ"
+                                                        id="field-5"
+                                                    />
+                                                    <span> Muốn thay đổi bác sĩ</span>
+                                                </label><br />
+                                                {/* <label htmlFor="field-6">
+                                                    <input
+                                                        {...register("ghichu", { required: true })}
+                                                        type="radio"
+                                                        name="ghichu"
+                                                        value="Lý do khác..."
+                                                        id="field-6"
+                                                    />
+                                                    <span> Lý do khác...</span>
+                                                </label><br /> */}
+                                                {errors.ghichu && <span className="text-danger">Hãy chọn lý do</span>}
                                             </div>
                                         </div>
                                     ) :

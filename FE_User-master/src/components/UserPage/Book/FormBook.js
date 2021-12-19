@@ -163,7 +163,8 @@ export default function FormBook() {
   useEffect(() => {
     const fetchScheduleTime = async () => {
       const res = await scheduleTimeApi.getByDentist(params);
-      setScheduleTime(res.data);
+      setScheduleTime(res.data.sort((a, b) =>
+      a.dayOfWeek.localeCompare(b.dayOfWeek)).slice(0, 7));
       // console.log(res.data);
       if (res.data.length === 0) {
         setHourScheduleTime([]);
@@ -272,6 +273,40 @@ export default function FormBook() {
   const btnAlert = () => {
     alert('Bạn chưa cập nhật thông tin cá nhân')
   }
+
+  // console.log(moment(new Date()).format("YYYY-MM-DD"));
+
+
+  const convertDate=(date)=>{
+      let day=moment(date,"YYYY-MM-DD").format("dddd");
+      let now=moment(new Date()).format("YYYY-MM-DD");
+      if(date===now){
+        return "Hôm nay"
+      }
+      if(day==="Monday"){
+          return "Thứ hai";
+      }
+      if(day==="Tuesday"){
+        return "Thứ ba";
+      }
+      if(day==="Wednesday"){
+        return "Thứ tư"
+      }
+      if(day==="Thursday"){
+        return "Thứ năm"
+      }
+      if(day==="Friday"){
+        return "Thứ sáu"
+      }
+      if(day==="Saturday"){
+        return "Thứ bảy"
+      }
+      if(day==="Sunday"){
+        return "Chủ nhật"
+      }
+  }
+
+
   return (
     <div
       className="pt-4 mt-5 text-center"
@@ -281,6 +316,9 @@ export default function FormBook() {
         Đặt lịch hẹn với nha sĩ{" "}
         <span className={classes.span}>Smile Dental</span>
       </h1>
+
+      <div  style={{fontSize:'1.1rem',fontFamily:"Roboto",color:'red',opacity:'90%'}}>*Các bước đặt lịch: (1) chọn dịch vụ, (2) chọn nha sĩ, (3) mô tả tình trạng, (4) chọn ngày khám, (5) chọn thời gian(khung giờ)</div>
+
       <br />
       <br />
       <div className="container">
@@ -303,7 +341,7 @@ export default function FormBook() {
 
               <div>
                 <label htmlFor="serviceId" className="form-label">
-                  Dịch vụ:
+                  Dịch vụ <sup className="text-danger">(1)</sup>:
                 </label>
                 <select
                   className="form-select"
@@ -341,7 +379,7 @@ export default function FormBook() {
 
               <div>
                 <label htmlFor="dentistProfile" className="form-label">
-                  Bác sĩ:
+                  Nha sĩ <sup className="text-danger">(2)</sup>:
                 </label>
                 <select
                   className="form-select"
@@ -362,7 +400,7 @@ export default function FormBook() {
                     onChangeDentist(e);
                   }}
                 >
-                  <option value="">Chọn bác sĩ</option>
+                  <option value="">Chọn nha sĩ</option>
                   {dentistProfile.map((val, idx) => {
                     return (
                       <option key={idx} value={val.id}>
@@ -379,7 +417,7 @@ export default function FormBook() {
 
               <div>
                 <label htmlFor="description" className="form-label">
-                  Ghi chú(mô tả tình trạng của bạn):
+                  Ghi chú(mô tả tình trạng của bạn) <sup className="text-danger">(3)</sup>:
                 </label>
                 <textarea
                   className="form-control"
@@ -405,7 +443,7 @@ export default function FormBook() {
             <div className="col-sm-3 mx-5">
               <div>
                 <label htmlFor="dayOfWeek" className="form-label mt-1">
-                  Chọn ngày:
+                  Chọn ngày <sup className="text-danger">(4)</sup>:
                 </label>
                 <br />
                 <select
@@ -418,13 +456,13 @@ export default function FormBook() {
                     bookingDayOfWeek.onChange(e);
                     onChangeSchedule(e);
                   }}
-                  style={{ textAlign: "center" }}
+                  // style={{ textAlign: "center" }}
                 >
                   <option value=""> -- Chọn ngày -- </option>
                   {scheduleTime.map((schedule, idx) => {
                     return (
                       <option key={idx} value={schedule.dayOfWeek}>
-                        {moment(schedule.dayOfWeek).format("DD-MM-YYYY")}
+                        {convertDate(schedule.dayOfWeek)+" - "+moment(schedule.dayOfWeek).format("DD/MM/YYYY")}
                       </option>
                     );
                   })}
@@ -434,7 +472,7 @@ export default function FormBook() {
 
               <div>
                 <label htmlFor="scheduleTime" className="form-label">
-                  Thời gian:
+                  Thời gian <sup className="text-danger">(5)</sup>:
                 </label>
                 <select
                   className="form-select"
@@ -482,7 +520,9 @@ export default function FormBook() {
 
           </div>
         </form>
+
       </div>
+
     </div>
   );
 }
