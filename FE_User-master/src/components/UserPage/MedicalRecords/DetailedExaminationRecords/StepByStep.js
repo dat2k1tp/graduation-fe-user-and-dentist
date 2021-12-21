@@ -104,9 +104,9 @@ export default function StepByStep({ setUpdateStatus }) {
     // -đang chờ xác nhận(0)-chờ khám (1)
     // -đã khám(hoàn thành(2)-huy(3)
 
-    const handleStep = (step) => () => {
-        setActiveStep(step);
-    };
+    // const handleStep = (step) => () => {
+    //     setActiveStep(step);
+    // };
 
     // //TEST BUTTON
     // const handleNext = () => {
@@ -209,10 +209,12 @@ export default function StepByStep({ setUpdateStatus }) {
                     <Stepper activeStep={activeStep} connector={<ColorlibConnector />}>
                         {steps.map((label, index) => (
                             <Step key={label}>
-                                <StepLabel onClick={handleStep(index)} StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+                                <StepLabel  StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
                             </Step>
                         ))}
                     </Stepper>
+                
+
 
                 ) : ''
             }

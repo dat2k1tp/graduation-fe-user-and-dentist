@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import http from '../../../service/http-common'
 import { formatDate } from "../../../../utils/moment-helper";
+// import moment from "moment";
+
 // import axios from "axios"
 
 export default function ListOfMedicalRecords({ updateStatus, setTab }) {
@@ -369,7 +371,7 @@ export default function ListOfMedicalRecords({ updateStatus, setTab }) {
                                     <th scope="col">Ngày đặt</th>
                                     <th scope="col">Mô tả</th>
                                     <th scope="col">Trạng thái</th>
-                                    <th scope="col">Id thời gian</th>
+                                    {/* <th scope="col">Thời gian</th> */}
                                     <th scope="col">Hành động</th>
                                 </tr>
                             </thead>
@@ -395,7 +397,7 @@ export default function ListOfMedicalRecords({ updateStatus, setTab }) {
                                                     </select>
 
                                                 </td>
-                                                <td>{val.scheduleTime.id}</td>
+                                                {/* <td>{moment(val.scheduleTime.start).format("HH:mm:ss")+" - "+moment(val.scheduleTime.end).format("HH:mm:ss")}</td> */}
                                                 <td>
                                                     <Link className="btn btn-info"
                                                         to={`/medicalRecords`}

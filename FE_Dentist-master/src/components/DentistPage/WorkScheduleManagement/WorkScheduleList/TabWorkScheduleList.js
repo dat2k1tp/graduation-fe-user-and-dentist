@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import http from '../../../service/http-common'
 import { formatDate } from "../../../../utils/moment-helper";
+// import moment from "moment";
 export default function TabWorkScheduleList({ updateList,setTab }) {
     const [listData, setListData] = useState([]);
     const [filterData, setFilterData] = useState([]);
@@ -355,7 +356,7 @@ export default function TabWorkScheduleList({ updateList,setTab }) {
                                     <th scope="col">Ngày đặt</th>
                                     <th scope="col">Mô tả</th>
                                     <th scope="col">Trạng thái</th>
-                                    <th scope="col">Id thời gian</th>
+                                    {/* <th scope="col">Thời gian</th> */}
                                     <th scope="col">Hành động</th>
                                 </tr>
                             </thead>
@@ -381,7 +382,7 @@ export default function TabWorkScheduleList({ updateList,setTab }) {
                                                     </select>
 
                                                 </td>
-                                                <td>{val.scheduleTime.id}</td>
+                                                {/* <td>{moment(val.scheduleTime.start).format("HH:mm:ss")+" - "+moment(val.scheduleTime.end).format("HH:mm:ss")}</td> */}
                                                 <td>
                                                     <Link className="btn btn-info"
                                                         to={`/work-schedule`}

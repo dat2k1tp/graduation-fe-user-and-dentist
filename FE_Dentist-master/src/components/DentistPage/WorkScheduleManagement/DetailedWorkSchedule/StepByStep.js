@@ -108,9 +108,9 @@ export default function StepByStep({ setUpdateList, booking, updateList }) {
     }
 
 
-    const handleStep = (step) => () => {
-        setActiveStep(step);
-    };
+    // const handleStep = (step) => () => {
+    //     setActiveStep(step);
+    // };
 
 
 
@@ -210,7 +210,7 @@ export default function StepByStep({ setUpdateList, booking, updateList }) {
                     <Stepper activeStep={activeStep} connector={<ColorlibConnector />}>
                         {steps.map((label, index) => (
                             <Step key={label}>
-                                <StepLabel onClick={handleStep(index)} StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
+                                <StepLabel  StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
                             </Step>
                         ))}
                     </Stepper>
