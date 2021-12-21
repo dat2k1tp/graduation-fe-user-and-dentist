@@ -26,7 +26,8 @@ export default function ShowWorkingScheduleDetails({setUpdateList,booking,setBoo
             })
                 .then((response) => {
                     const { data } = response;
-                    setScheduleTime(data.data)
+                    setScheduleTime(data.data.sort((a, b) =>
+                    a.dayOfWeek.localeCompare(b.dayOfWeek)).slice(0, 7))
                 })
                 .catch((error) => {
                     console.log(error.response);
@@ -120,6 +121,34 @@ export default function ShowWorkingScheduleDetails({setUpdateList,booking,setBoo
 
 
     // console.log(booking.scheduleTime.id);
+    const convertDate=(date)=>{
+        let day=moment(date,"YYYY-MM-DD").format("dddd");
+        let now=moment(new Date()).format("YYYY-MM-DD");
+        if(date===now){
+          return "Hôm nay"
+        }
+        if(day==="Monday"){
+            return "Thứ hai";
+        }
+        if(day==="Tuesday"){
+          return "Thứ ba";
+        }
+        if(day==="Wednesday"){
+          return "Thứ tư"
+        }
+        if(day==="Thursday"){
+          return "Thứ năm"
+        }
+        if(day==="Friday"){
+          return "Thứ sáu"
+        }
+        if(day==="Saturday"){
+          return "Thứ bảy"
+        }
+        if(day==="Sunday"){
+          return "Chủ nhật"
+        }
+    }
 
     return (
         <div>
@@ -174,7 +203,7 @@ export default function ShowWorkingScheduleDetails({setUpdateList,booking,setBoo
                                 {scheduleTime.map((schedule, idx) => {
                                     return (
                                         <option key={idx} value={schedule.dayOfWeek}>
-                                            {moment(schedule.dayOfWeek).format("DD-MM-YYYY")}
+                                            {convertDate(schedule.dayOfWeek)+" - "+moment(schedule.dayOfWeek).format("DD/MM/YYYY")}
                                         </option>
                                     );
                                 })}

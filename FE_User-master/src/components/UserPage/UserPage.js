@@ -22,6 +22,7 @@ import axios from 'axios';
 // import { useHistory } from 'react-router';
 import ErrorPage from '../service/ErrorPage';
 import Login from '../Login/Login';
+import FormConfirm from './FormConfirm/FormConfirm';
 function UserPage() {
 
     const useStyles = makeStyles((theme) => ({
@@ -358,6 +359,9 @@ function UserPage() {
 
                         <Route path="/register">
                             <Register />
+                        </Route>
+                        <Route path="/confirm">
+                            <FormConfirm/>
                         </Route>
 
 
