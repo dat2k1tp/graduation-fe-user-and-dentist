@@ -384,7 +384,7 @@ function DetailedNews() {
                                 </p>
                                 {
                                     token === null ? (
-                                        <Link to="/account/login" className="text-dark text-decoration-none">
+                                        <Link to="/login" className="text-dark text-decoration-none">
                                             <i className='far fa-thumbs-up fs-3'> {listLike.length}</i></Link>
 
                                     ) : (<i className="far fa-thumbs-up fs-3" id="colorLike"

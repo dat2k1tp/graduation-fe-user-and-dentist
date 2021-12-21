@@ -240,7 +240,7 @@ function UserPage() {
                                 <li className="nav-item dropdown">
                                     <span className="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <b>{token !== null && account.email !== "" && typeof (account.email) != 'undefined' && auth.rolesId === 'ROLE_CUSTOMER' ?
-                                            "Xin chào " + account.email.substring(0, account.email.indexOf("@"))+" " : 'Xin chào, vui lòng đăng nhập '}</b>
+                                            "Xin chào " + account.email.substring(0, account.email.indexOf("@")) + " " : 'Xin chào, vui lòng đăng nhập '}</b>
                                         <img src="http://localhost:8080/api/v1/files/download/image?filename=32612e18-c053-4984-a510-ad7256ee0756.jpg" alt="logo" width="30" height="24" />
                                     </span>
                                     <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -255,13 +255,17 @@ function UserPage() {
 
                                                 </div>
                                             ) : (
-                                                <li><Link className="dropdown-item"
-                                                    to="/login">Đăng nhập</Link></li>
+                                                <div>
+                                                    <li><Link className="dropdown-item"
+                                                        to="/login">Đăng nhập</Link></li>
+                                                    <li><hr className="dropdown-divider" /></li>
+                                                    <li><Link className="dropdown-item" to="/register">Đăng ký</Link></li>
+                                                </div>
+
 
                                             )
                                         }
-                                        <li><hr className="dropdown-divider" /></li>
-                                        <li><Link className="dropdown-item" to="/register">Đăng ký</Link></li>
+
                                     </ul>
                                 </li>
                             </div>
@@ -360,9 +364,7 @@ function UserPage() {
                         <Route path="/register">
                             <Register />
                         </Route>
-                        <Route path="/confirm">
-                            <FormConfirm/>
-                        </Route>
+
 
 
 
@@ -414,13 +416,16 @@ function UserPage() {
                                     </Switch>
                                 ) :
                                 (
-                                    <React.Fragment>
+                                    <Switch>
+                                        <Route path="/confirm">
+                                            <FormConfirm />
+                                        </Route>
                                         <Route path="*" >
                                             {/* <h1>No token</h1> */}
                                             <ErrorPage />
                                         </Route>
 
-                                    </React.Fragment>
+                                    </Switch>
                                 )
                         }
 
